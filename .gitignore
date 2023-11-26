@@ -1,0 +1,12 @@
+# 
+*.pyc
+#
+.myEnv/
+#
+.env
+#
+logs/
+#
+staticfiles/
+#
+media/
