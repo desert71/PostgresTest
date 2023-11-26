@@ -7,13 +7,22 @@
 
 Создать ".env" файл с ".env.example" ключами и заполнить их необходимыми значениями.
 
->1. Создать виртуальное окружение: \
+>1. Клонировать репозиторий: \
+`git clone <rep>` 
+
+>2. Создать виртуальное окружение: \
 `python -m venv .myVenv`
 
->2. Установить зависимости: \
-  `pip install -r requirements.txt -t .`
+>3. Активировать виртуальное окружение: \
+`..\.myVenv\Scripts\activate.bat`
 
->3. Создать базу данных postrgeSQL: \
+>4. Установить зависимости: \
+  `pip install -r requirements.txt -t .myVenv\Lib\site-packages`
+
+>5. Создать базу данных postrgeSQL: \
+
+>6. Сделать миграцию базы данных: \
+`python manage.py migrate`
 
 <!-- Активировать виртуальное окружение:
 'poetry shell'
