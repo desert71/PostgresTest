@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from testdb.views import goal_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('goals/', goal_list, name='goal_list')
 ]
