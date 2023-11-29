@@ -8,6 +8,7 @@ colorama==0.4.6
 crashtest==0.4.1
 distlib==0.3.7
 Django==4.2.7
+djangorestframework==3.14.0
 dulwich==0.21.6
 fastjsonschema==2.19.0
 filelock==3.13.1
@@ -28,6 +29,7 @@ psycopg2==2.9.9
 ptyprocess==0.7.0
 pyproject_hooks==1.0.0
 python-decouple==3.8
+pytz==2023.3.post1
 pywin32-ctypes==0.2.2
 rapidfuzz==3.5.2
 requests==2.31.0
