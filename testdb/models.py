@@ -9,12 +9,14 @@ class GoalType(models.TextChoices):
     SPENDING = "Трата"
     REFILL = "Пополнение"
 
+
 class GoalManager(models.Manager):
     def goals(self):
         return self.filter(goal_type=GoalType.REFILL)
 
     def budgets(self):
         return self.filter(goal_type=GoalType.SPENDING)
+
 
 class Goal(models.Model):
 
@@ -54,6 +56,19 @@ class Goal(models.Model):
         verbose_name = "Цель"
         verbose_name_plural = "Цели"
 
+
+class Category(models.Model):
+
+    name = models.CharField(max_length=64, verbose_name="Название категории")
+
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+    
+    def __str__(self) -> str:
+        return f"{self.name}"
+
+
 class Operation(models.Model):
 
     name = models.TextField(
@@ -71,6 +86,15 @@ class Operation(models.Model):
     operation_at = models.DateTimeField(
         default=datetime.now,
         verbose_name="Дата операции",
+    )
+
+    category = models.ForeignKey(
+        Category,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name="operations",
+        verbose_name="Категория операции",
     )
 
     class Meta:
