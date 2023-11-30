@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+#from django.conf.urls import url
+#from django
 from testdb.views import CategoryViewSet, OperationViewSet
-from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework import permissions
+# from rest_framework.urlpatterns import format_suffix_patterns
+# from rest_framework_swagger.views import get_swagger_view
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 category_list = CategoryViewSet.as_view({
     'get': 'list',
@@ -41,6 +47,19 @@ operation_detail = OperationViewSet.as_view({
     'delete': 'destroy'
 })
 
+schema_view = get_schema_view(
+    openapi.Info(
+        title="API",
+        default_version='v1',
+        description="API documentation",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="amkazennov99@gmail.com"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
+
 
 
 urlpatterns = [
@@ -50,4 +69,6 @@ urlpatterns = [
     path('catergories/<int:pk>/', category_detail, name='category-detail'),
     path('operations/', operation_list, name='operation-list'),
     path('operations/<int:pk>/', operation_detail, name='operation-detail'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

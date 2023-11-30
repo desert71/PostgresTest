@@ -12,10 +12,12 @@ distlib==0.3.7
 Django==4.2.7
 django-rest-swagger==2.2.0
 djangorestframework==3.14.0
+drf-yasg==1.21.7
 dulwich==0.21.6
 fastjsonschema==2.19.0
 filelock==3.13.1
 idna==3.6
+inflection==0.5.1
 installer==0.7.0
 itypes==1.2.0
 jaraco.classes==3.3.0
@@ -38,9 +40,11 @@ pyproject_hooks==1.0.0
 python-decouple==3.8
 pytz==2023.3.post1
 pywin32-ctypes==0.2.2
+PyYAML==6.0.1
 rapidfuzz==3.5.2
 requests==2.31.0
 requests-toolbelt==1.0.0
+setuptools==69.0.2
 shellingham==1.5.4
 simplejson==3.19.2
 sqlparse==0.4.4
