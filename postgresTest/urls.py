@@ -16,9 +16,38 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from testdb.views import goal_list
+from testdb.views import CategoryViewSet, OperationViewSet
+from rest_framework.urlpatterns import format_suffix_patterns
+
+category_list = CategoryViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
+category_detail = CategoryViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
+
+operation_list = OperationViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
+operation_detail = OperationViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('goals/', goal_list, name='goal_list')
+    #path('goals/', goal_list, name='goal_list')
+    path('catergories/', category_list, name='category-list'),
+    path('catergories/<int:pk>/', category_detail, name='category-detail'),
+    path('operations/', operation_list, name='operation-list'),
+    path('operations/<int:pk>/', operation_detail, name='operation-detail'),
 ]
