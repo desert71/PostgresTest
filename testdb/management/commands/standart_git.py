@@ -12,7 +12,7 @@ class Command(BaseCommand):
     def handle(self, *args: Any, **options: Any) -> str | None:
         str_commit = options['commit']
         cmd1 = 'git add .'
-        cmd2 = f'git commit -m {str_commit}'
+        cmd2 = f'git commit -m "{str_commit}"'
         cmd3 = 'git push origin master'
         r_cmd1 = subprocess.check_output(cmd1)
         r_cmd2 = subprocess.check_output(cmd2)
@@ -20,5 +20,3 @@ class Command(BaseCommand):
         print(r_cmd1.decode('utf-8'))
         print(r_cmd2.decode('utf-8'))
         print(r_cmd3.decode('utf-8'))
-
-
